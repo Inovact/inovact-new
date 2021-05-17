@@ -5,6 +5,7 @@
   "dependencies": {
     "//": "the below are the dependencies for the react frontend",
     "@material-ui/core": "^4.11.4",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "@stripe/stripe-js": "^1.14.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -63,7 +64,13 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-swipeable-views": "^0.13.0",
+    "@types/styled-components": "^5.1.9",
+    "material-ui-popup-state": "^1.8.3",
     "netlify-cli": "^3.29.3",
-    "react-router-dom": "^5.2.0"
+    "react-elastic-carousel": "^0.11.5",
+    "react-router-dom": "^5.2.0",
+    "react-swipeable-views": "^0.13.9",
+    "styled-components": "^5.3.0"
   }
 }
