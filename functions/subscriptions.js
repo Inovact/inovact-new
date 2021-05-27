@@ -7,7 +7,7 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 const { STRIPE_PUBLISHABLE_KEY } = require('./utils/config');
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event) => {
 	if (event.httpMethod !== 'POST') {
 		return {
 			statusCode: 400,

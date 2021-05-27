@@ -26,7 +26,7 @@ const getProject = async (event, context, callback) => {
 			if (resultProject) {
 				resolve({ statusCode: 200, body: JSON.stringify(resultProject) });
 			} else {
-				const { project } = await query({
+				const response = await query({
 					query: `query getProjectById{
 						project( where: {id: {_eq: ${id}}}) {
 							caption
@@ -75,8 +75,22 @@ const getProject = async (event, context, callback) => {
 				//? This is where it sets the key value pair for a particular project
 				//? so that next time the same project is fetched it can return from
 				//? the cache.
-				client.setex(`project:${id}`, 3600, JSON.stringify(project));
-				resolve({ statusCode: 200, body: JSON.stringify(project) });
+				if (!response.errors) {
+					client.setex(
+						`project:${id}`,
+						3600,
+						JSON.stringify(response.data.project)
+					);
+					resolve({
+						statusCode: 200,
+						body: JSON.stringify(response.data.project),
+					});
+				} else {
+					resolve({
+						statusCode: 422,
+						body: JSON.stringify(response.errors.map((error) => error.message)),
+					});
+				}
 			}
 		});
 	});

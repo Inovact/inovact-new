@@ -6,6 +6,7 @@ import {
 	FETCH_PROJECT_ALL,
 	FETCH_PROJECT_BY_ID,
 	CREATE_PROJECT,
+	LIKE_PROJECT,
 } from '../constants/actionTypes';
 import { actiontype, project } from '../constants/interfaceTypes';
 import * as api from '../utils/api';
@@ -27,7 +28,7 @@ export const getProjects = () => async (dispatch: Dispatch<actiontype>) => {
 		dispatch({ type: START_LOADING, payload: null });
 		const { data }: AxiosResponse<project[]> = await api.fetchProjects();
 		dispatch({ type: FETCH_PROJECT_ALL, payload: data });
-		dispatch({ type: STOP_LAODING, payload: null });
+		// dispatch({ type: STOP_LAODING, payload: null });
 	} catch (e) {
 		console.log(e);
 	}
@@ -45,6 +46,19 @@ export const createProject =
 			dispatch({ type: CREATE_PROJECT, payload: data });
 			dispatch({ type: STOP_LAODING, payload: null });
 			history.pushState('', '', `/project/:${data.id}`);
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+export const likeProject =
+	(id: number, userId: number) => async (dispatch: Dispatch<actiontype>) => {
+		try {
+			const { data }: AxiosResponse<project> = await api.likeProject(
+				id,
+				userId
+			);
+			dispatch({ type: LIKE_PROJECT, payload: data });
 		} catch (e) {
 			console.log(e);
 		}
