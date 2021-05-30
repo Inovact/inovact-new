@@ -16,32 +16,37 @@ const useStyles = makeStyles((theme) =>
     maxWidth: 300,
     marginLeft:50,
     borderRadius:25,
-    marginTop:20
+    marginTop:40
   },
   cardcontent:{
-    padding:'20px',
+    padding:'10px',
     margin:10,
     justifyContent:'left',
   },
   name: {
     marginBottom: 5,
     marginLeft:10,
-    textAlign:'left'
+    textAlign:'center'
   },
   cover: {
-    width: 60,
-    height:60,
+    width: 80,
+    height:80,
   },
   CHcontent:{
     display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
     flexDirection:'column',
     marginTop:20,
     marginBottom:20,
   },
+  button:{
+marginTop:10,
+  },
 }));
 
 
-const RenderSubscriberCard:React.FC =()=> {
+const RenderInvestorCard:React.FC =()=> {
   const classes = useStyles();
   return (
     <Card className={classes.root}> 
@@ -58,14 +63,15 @@ const RenderSubscriberCard:React.FC =()=> {
          </Box>
           <CardActions className={classes.CHcontent} >
               <Box>
-                <Typography className={classes.name} color="primary">John Doe</Typography>
-                <Typography className={classes.name} color="textSecondary">246 subscribers</Typography>
-                <Button variant="outlined" color="primary">Subscribe</Button>
-              </Box>         
+                <Typography className={classes.name} color="primary">Company or Investor name</Typography>
+                <Typography className={classes.name} color="textSecondary">Projects invested </Typography>
+                <Button variant="outlined" color="primary" className={classes.button}>Request Fund</Button> 
+              </Box>   
+                
             </CardActions>
         </CardContent>
     </Card>
   );
 }
 
-export default RenderSubscriberCard;
+export default RenderInvestorCard;

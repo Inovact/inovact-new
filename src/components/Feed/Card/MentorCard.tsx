@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) =>
   root: {
     maxWidth: 300,
     marginLeft:50,
-    borderRadius:25,
-    marginTop:20
+   
+    marginTop:40
   },
   cardcontent:{
-    padding:'20px',
+    padding:'10px',
     margin:10,
     justifyContent:'left',
   },
@@ -35,13 +35,18 @@ const useStyles = makeStyles((theme) =>
   CHcontent:{
     display:'flex',
     flexDirection:'column',
+    justifyContent:'center',
+    alignItems:'center',
     marginTop:20,
     marginBottom:20,
   },
+  button:{
+    marginTop:10,
+      },
 }));
 
 
-const RenderSubscriberCard:React.FC =()=> {
+const RenderMentorCard:React.FC =()=> {
   const classes = useStyles();
   return (
     <Card className={classes.root}> 
@@ -55,17 +60,21 @@ const RenderSubscriberCard:React.FC =()=> {
                       image={image}
                       title="User Image"
                       />      
-         </Box>
-          <CardActions className={classes.CHcontent} >
-              <Box>
-                <Typography className={classes.name} color="primary">John Doe</Typography>
+           </Box>
+           <Box  className={classes.CHcontent} >
+           <Typography className={classes.name} color="primary">John Doe</Typography>
                 <Typography className={classes.name} color="textSecondary">246 subscribers</Typography>
-                <Button variant="outlined" color="primary">Subscribe</Button>
-              </Box>         
-            </CardActions>
-        </CardContent>
+                <Button variant="outlined" color="primary" className={classes.button}>Request Fund</Button> 
+           </Box>
+         </CardContent>  
+      {/*<CardActions>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>*/}
+
     </Card>
   );
 }
 
-export default RenderSubscriberCard;
+export default RenderMentorCard;

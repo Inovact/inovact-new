@@ -8,7 +8,7 @@ section {
    display:none;
 }
 
-header{
+.header{
     position:fixed;
     top:0;
     left:0;
@@ -24,7 +24,7 @@ header{
     color:#FFA500;
 }
 
-header :hover {
+.header :hover {
     color:white;
 }
 .home :hover{

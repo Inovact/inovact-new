@@ -8,20 +8,6 @@ export const SidebarData: SidebarItem[] = [
     {
         title: 'Feed',
         path: '/feed',
-        subnav: [
-            {
-                title: 'Projects',
-                path: '/feed/projects',
-            },
-            {
-                title: 'Ideas',
-                path: '/feed/ideas',
-            },
-            {
-                title: 'Subscriber',
-                path: '/feed/subscriber',
-            }
-        ]
     },
     {
         title: 'My Profile',

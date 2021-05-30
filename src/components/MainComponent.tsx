@@ -7,6 +7,7 @@ import Landing from '../pages/Landing';
 import Login from './Auth/Login';
 import MyProfile from './Feed/MyProfile/MyProfile';
 import FeedPage from '../pages/Feed';
+import FollowUp from './Form/Form';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 const theme = createMuiTheme({
@@ -30,9 +31,11 @@ const MainComponent: React.FunctionComponent = (): JSX.Element => {
 				<Route exact path='/' component={Landing} />
 				<Route path='/' component={Login} />
 				<Route path="/feed" component={FeedPage}/>
-				<Route path="/MyProfile" component={MyProfile} />
+				<Route path="/myprofile" component={MyProfile} />
+				<Route path="/followUp" component={FollowUp}/>
 			</Router>
 		</div>
+	
 		</ThemeProvider>
 	);
 };

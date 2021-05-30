@@ -100,7 +100,7 @@ const projectDetails:Proj={
   "image":"../../../assets/temp.jpeg"
   }
 
-const RenderProjectCard:React.FC =()=> {
+const RenderTeamCard:React.FC =()=> {
   const classes = useStyles();
   const [chipData, setChipData] = React.useState<ChipData[]>([
     { key: 0, label: 'Angular' },
@@ -114,19 +114,19 @@ const RenderProjectCard:React.FC =()=> {
     
       <CardContent className={classes.cardcontent}>
       <div className="headerCard">
-          <Typography variant="h4" className={classes.titleP} >Title of the Project</Typography> 
+          <Typography variant="h4" className={classes.titleP} >Team name</Typography> 
             <Box className={classes.CHcontent} >
                 <Box className={classes.left}>
                       <CardMedia
                       component="img"
                       className={classes.cover}
-                      alt="user Image"
+                      alt="Team icon"
                       image={image}
-                      title="User Image"
+                      title="Team Image"
                       />
                   <Box>
                       <Typography className={classes.pos} color="primary">
-                        John Doe
+                        Admin John Doe
                       </Typography>
                       <Typography className={classes.pos} color="textSecondary">
                         <a>Follow</a>
@@ -156,6 +156,7 @@ const RenderProjectCard:React.FC =()=> {
         
           <Box>        
               <Typography paragraph >
+                Team Project description:
                 Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
                 across all continents except Antarctica
                 Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -193,7 +194,7 @@ const RenderProjectCard:React.FC =()=> {
                   <Avatar alt="Travis Howard" src={image} />
                   <Avatar alt="Cindy Baker" src={image}/>
                   <Avatar alt="Agnes Walker"src={image} />
-                  <Avatar alt="Trevor Henderson" src={image} />
+                
                 </AvatarGroup>
             </Box>
 
@@ -203,4 +204,4 @@ const RenderProjectCard:React.FC =()=> {
   );
 }
 
-export default RenderProjectCard;
+export default RenderTeamCard;

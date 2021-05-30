@@ -1,192 +1,195 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles ,createStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
-import {Card} from '@material-ui/core';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import {Button,Box,Grid} from '@material-ui/core';
+import {Card,CardHeader,CardMedia,CardContent,CardActions,Collapse,Avatar,IconButton,
+  Typography,Box,Button, CardActionArea,Paper,Chip} from '@material-ui/core';
 import {BiLike} from 'react-icons/bi';
 import {MdAddCircle} from 'react-icons/md';
 import {RiUserFollowLine} from 'react-icons/ri';
-import image from '../../../assets/temp.jpeg';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
-const useStyles = makeStyles((theme) => ({
+import image from '../../../assets/avatar.png';
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 700,
+    marginLeft:50,
+    borderRadius:25,
+    marginTop:20
   },
+
+  cardcontent:{
+    padding:'20px',
+    margin:10,
+    justifyContent:'left',
+  },
+
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
+
   avatar: {
-    backgroundColor: '#020652',
+    backgroundColor:'#020652',
   },
-  top:{
-    background:'primary',
-
-  },
-  paper:{
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(5, 5, 3),
-    position:'relative',
-    left:'80%',
-    top:'5%',
-  },
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+  pos: {
    
-    width:'500px',
-    height:'600px',
-    border:'none',
+    marginBottom: 5,
+    marginLeft:10,
+    textAlign:'left'
   },
-}));
 
-type Ideas={
+  cover: {
+    width: 60,
+    height:60,
+  },
+
+  titleP:{
+ textAlign:'left',
+ fontWeight:600,
+ textTransform:'none',
+  },
+  CHcontent:{
+    display:'flex',
+    flexDirection:'row',
+    marginTop:20,
+    marginBottom:20,
+  },
+  left:{
+    display:'flex',
+    flexDirection:'row',
+  },
+  right:{
+marginLeft:350,
+  },
+ chip:{
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  listStyle: 'none',
+  padding: theme.spacing(0.5),
+  margin: 5,
+
+ },
+ everyChip:{
+margin:5,
+ },
+ avatars:{
+   paddingLeft:'30px',
+marginLeft:150,
+ },
+}));
+interface ChipData {
+  key: number;
+  label: string;
+}
+type Proj={
   id?:string |number;
   name:string;
+  image?:string;
   description:string;
   isComplete:boolean;
-  tojoin:boolean;
+  data?:Proj;
 };
-const ideaDetails:Ideas[]=[
-  {
-    "id": 1,
-    "description":'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet pharetra ipsum, in interdum leo vestibulum in. Donec varius turpis maximus, posuere nisl quis, efficitur mi. Donec arcu risus, gravida aliquam pulvinar quis, malesuada sed augue. Etiam tincidunt dapibus pharetra. Donec velit urna, cursus id nisi sit amet, consectetur dignissim nisl. Aenean et dolor pulvinar, venenatis lacus eu, cursus ex. Curabitur eu felis vel leo efficitur congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi pretium sapien eget tellus lacinia, sed gravida sem dapibus. In varius mi id lorem feugiat, in pretium lacus aliquet. Aenean vestibulum risus a orci congue tempor. Curabitur et eros nec nisi pulvinar venenatis a vel urna. Integer semper efficitur mi vel porttitor. Cras condimentum.',
-    "name": 'John Doe',
-    "isComplete":true,
-    "tojoin":true,
-  },
-  {
-    "id": 1,
-    "description":'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet pharetra ipsum, in interdum leo vestibulum in. Donec varius turpis maximus, posuere nisl quis, efficitur mi. Donec arcu risus, gravida aliquam pulvinar quis, malesuada sed augue. Etiam tincidunt dapibus pharetra. Donec velit urna, cursus id nisi sit amet, consectetur dignissim nisl. Aenean et dolor pulvinar, venenatis lacus eu, cursus ex. Curabitur eu felis vel leo efficitur congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi pretium sapien eget tellus lacinia, sed gravida sem dapibus. In varius mi id lorem feugiat, in pretium lacus aliquet. Aenean vestibulum risus a orci congue tempor. Curabitur et eros nec nisi pulvinar venenatis a vel urna. Integer semper efficitur mi vel porttitor. Cras condimentum.',
-    "name": 'John Doe',
-    "isComplete":true,
-    "tojoin":true,
-  },
-  {
-    "id": 1,
-    "description":'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet pharetra ipsum, in interdum leo vestibulum in. Donec varius turpis maximus, posuere nisl quis, efficitur mi. Donec arcu risus, gravida aliquam pulvinar quis, malesuada sed augue. Etiam tincidunt dapibus pharetra. Donec velit urna, cursus id nisi sit amet, consectetur dignissim nisl. Aenean et dolor pulvinar, venenatis lacus eu, cursus ex. Curabitur eu felis vel leo efficitur congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi pretium sapien eget tellus lacinia, sed gravida sem dapibus. In varius mi id lorem feugiat, in pretium lacus aliquet. Aenean vestibulum risus a orci congue tempor. Curabitur et eros nec nisi pulvinar venenatis a vel urna. Integer semper efficitur mi vel porttitor. Cras condimentum.',
-    "name": 'John Doe',
-    "isComplete":true,
-    "tojoin":true,
-  },
-];
- 
+const projectDetails:Proj={
+  "id": 1,
+  "description":'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
+  "name": 'John Doe',
+  "isComplete":true,
+  "image":"../../../assets/temp.jpeg"
+  }
 
-const RenderCard:React.FC<{data:Ideas}>  =({data})=> {
+const RenderIdeaCard:React.FC =()=> {
   const classes = useStyles();
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-   <>
-    <Card className={classes.root}>
-      <CardHeader style={{flexDirection: 'row-reverse',}}
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            P
-          </Avatar>
-        }
-        action={       
-          <IconButton aria-label="settings">
-            <MdAddCircle />
-          </IconButton>
-        }
-        title= {data.name}
+  const [chipData, setChipData] = React.useState<ChipData[]>([
+    { key: 0, label: 'Angular' },
+    { key: 1, label: 'jQuery' },
+    { key: 2, label: 'Polymer' },
+    { key: 3, label: 'React' },
   
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet pharetra Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet pharetra
-        </Typography>
-      </CardContent>
+  ]);
+  return (
+    <Card className={classes.root}>
+    
+      <CardContent className={classes.cardcontent}>
+      <div className="headerCard">
+          <Typography variant="h4" className={classes.titleP} >Title of the Idea</Typography> 
+            <Box className={classes.CHcontent} >
+                <Box className={classes.left}>
+                      <CardMedia
+                      component="img"
+                      className={classes.cover}
+                      alt="user Image"
+                      image={image}
+                      title="User Image"
+                      />
+                  <Box>
+                      <Typography className={classes.pos} color="primary">
+                        John Doe
+                      </Typography>
+                      <Typography className={classes.pos} color="textSecondary">
+                        <a>Follow</a>
+                      </Typography>
+                      </Box>  
+                </Box>
+                <Box className={ classes.right}>
+                      <IconButton aria-label="settings">
+                           <MdAddCircle />
+                      </IconButton>
+                </Box>
+            
+        </Box>
+    </div>
+       
+        
+          <Box>        
+              <Typography paragraph >
+                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                across all continents except Antarctica
+              </Typography>
+          </Box>
+  
+          <CardActions className={classes.CHcontent} >
+           
+              <Box>
+                  <IconButton  aria-label="add to favorites">
+                      <BiLike />
+                </IconButton>
+              </Box>
+          
+              <Box component="ul" className={classes.chip}>
+                    {chipData.map((data) => {
 
-      <CardActions style={{flexDirection: 'row-reverse'}}>
-        <IconButton  aria-label="add to favorites">
-          <BiLike />
-        </IconButton>
+                    return (
+                    <li key={data.key}>
+                    <Chip className={classes.everyChip}
+                     color="primary"
+                     size="small"
+                     variant="outlined"
+                    label={data.label}
+                    />
+                    </li>
+                    );
+                    })}
+               </Box>
+         
+            <Box className={classes.avatars}>
+                <AvatarGroup max={4}>
+                  <Avatar alt="Remy Sharp" src={image} />
+                  <Avatar alt="Travis Howard" src={image} />
+                  <Avatar alt="Cindy Baker" src={image}/>
+                  <Avatar alt="Agnes Walker"src={image} />
+                  <Avatar alt="Trevor Henderson" src={image} />
+                </AvatarGroup>
+            </Box>
 
-        <IconButton aria-label="share">
-        <RiUserFollowLine />
-        </IconButton>
-
-        <IconButton aria-label="share" style={{position:'relative',left:'80px',}}>
-          <Button  variant="outlined" size="small" color="primary" onClick={handleOpen} >
-             Learn More
-          </Button>
-          </IconButton>
-      </CardActions>
+            </CardActions>
+        </CardContent>
     </Card>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-      }}>
-           <Fade in={open}>
-              <div className={classes.paper}>
-                    <Box className={classes.top}>
-                          <Typography variant="h6"> {data.name}</Typography>
-                    </Box>
-                
-                    <Card>
-                    <CardContent>
-                        <Typography  component="p">
-                        {data.description}
-                        </Typography>
-                      </CardContent>
-                      <CardActions style={{flexDirection: 'row-reverse',justifyContent:'center'}}>
-                            <IconButton  aria-label="add to favorites">
-                              <BiLike />
-                            </IconButton>
-                            <IconButton aria-label="share">
-                            <RiUserFollowLine />
-                            </IconButton>
-                        
-                            <IconButton aria-label="settings">
-                            <MdAddCircle />
-                          </IconButton>
-                            </CardActions>
-                          </Card>
-              </div>
-        </Fade>
-      </Modal>
-  </>
   );
 }
-const AllIdeaCard =()=>{
-  const classes=useStyles();
-  {ideaDetails.map((data)=>{   
-      return(     
-      <Box id="#allideas">  
-              <RenderCard data={data}/>   
-      </Box> 
-  );
-})}
-}
-export default AllIdeaCard;
+
+export default RenderIdeaCard;

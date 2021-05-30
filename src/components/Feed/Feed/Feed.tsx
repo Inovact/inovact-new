@@ -95,7 +95,7 @@ interface TabPanelProps {
     {projectDetails.map((data)=>{   
         return(     
         <Box id="#allprojects">  
-                <RenderProjectCard data={data}  key={data.id}/>   
+                <RenderProjectCard />   
         </Box> 
     );
   })}
@@ -115,21 +115,7 @@ const Feed =()=>{
     const theme = useTheme();
     return(
        <div>
-<NavBar />
-           <Container className={classes.feedtab}>
-           <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="fullWidth"
-                aria-label="tabs"
-             >
-          <Tab label="Projects" {...a11yProps(0)} />
-          <Tab label="Ideas" {...a11yProps(1)} />
-          <Tab label="Subscribers" {...a11yProps(2)} />
-        </Tabs>
-           </Container>
+       
             <Container>            
                     
 
@@ -144,6 +130,7 @@ const Feed =()=>{
                             </TabPanel>
                             <TabPanel value={value} index={1} dir={theme.direction}>
                                     {AllIdeaCard}
+                                    hii
                             </TabPanel>
                             <TabPanel value={value} index={2} dir={theme.direction}>
                                     {AllSubscriberCard}
