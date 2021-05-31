@@ -13,11 +13,10 @@ const useStyles = (c: string, blur: number = 15) =>
       boxShadow: "10px 10px 10px rgba(30, 30, 30, 0.1)",
     },
     glassBorders: {
-      borderLeft: `solid 1px ${color(c).alpha(0.3).toString()}`,
-      borderTop: `solid 1px ${color(c).alpha(0.8).toString()}`,
+     
     },
     glassRounded: {
-      borderRadius: theme.spacing(2),
+     
     },
   }));
 

@@ -12,7 +12,6 @@ interface IProps {
   children: any;
   when:string;
   is:string;
-  // any other props that come into the component
 }
 
 const Condition = ({ when, is, children,...props}: IProps) => (
@@ -34,7 +33,7 @@ const SForm = () => (
       
           <Grid item xs={12}> <Typography variant="h6">I am a </Typography>  </Grid>
              <Grid container>
-             <Grid item xs={4}>
+             <Grid item xs={6}>
               <label>
                 <Field
                   name="reception"
@@ -42,11 +41,11 @@ const SForm = () => (
                   type="radio"
                   value="student"
                 />{' '}
-                Student
+               <Typography variant="h6">Student </Typography>
               </label>
               </Grid>
 
-              <Grid item xs={4}>
+              <Grid item xs={6}>
               <label>
                 <Field
                   name="reception"
@@ -54,19 +53,7 @@ const SForm = () => (
                   type="radio"
                   value="mentor"
                 />{' '}
-               Mentor
-              </label>
-              </Grid>
-
-              <Grid item xs={4}>
-              <label>
-                <Field
-                  name="reception"
-                  component="input"
-                  type="radio"
-                  value="investor"
-                />{' '}
-               Investor
+             <Typography variant="h6">Mentor</Typography>
               </label>
               </Grid>
         </Grid>
@@ -104,92 +91,64 @@ const SForm = () => (
           <Grid item>
           <Condition when="reception" is="mentor">
             <Grid container spacing={1}>
-            <Grid item xs={12} md={6} >  
-                                        <TextField 
-                                            name="qualification" 
-                                            id="qualification" 
-                                            label="Qualification" 
-                                            variant="outlined"
-                                            placeholder="Enter your highest qualification"
-                                           
-                                    />
-                                  </Grid>
+                <Grid item xs={12} md={6} >  
+                    <TextField 
+                              name="qualification" 
+                              id="qualification" 
+                              label="Qualification" 
+                              variant="outlined"
+                              placeholder="Enter your highest qualification"
+                              
+                      />
+                  </Grid>
 
 
-                                <Grid item xs={12} md={6} > 
-                                        <TextField 
-                                            name="fieldOfExpertise"
-                                            id="fieldOfExpertise" 
-                                            label="Field Of Expertise" 
-                                            variant="outlined"
-                                            placeholder="Enter you Field of expertise"
-                                           
-                                        />
-                                    </Grid>
-                            
-                                    <Grid item xs={12} md={6} > 
-                                        <TextField 
-                                        name="achivement"
-                                        label="Achivement" 
-                                        variant="outlined"
-                                        placeholder="What are your achivements"
-                                       
-                                        />
-                                    </Grid>
+                  <Grid item xs={12} md={6} > 
+                          <TextField 
+                              name="fieldOfExpertise"
+                              id="fieldOfExpertise" 
+                              label="Field Of Expertise" 
+                              variant="outlined"
+                              placeholder="Enter you Field of expertise"
+                              
+                          />
+                      </Grid>
+              
+                      <Grid item xs={12} md={6} > 
+                          <TextField 
+                          name="achivement"
+                          label="Achivement" 
+                          variant="outlined"
+                          placeholder="What are your achivements"
+                          
+                          />
+                      </Grid>
 
-                                    <Grid item xs={12} md={6}> 
-                                        <TextField 
-                                            name="experience"
-                                            id="experience" 
-                                            label="Experience" 
-                                            variant="outlined"
-                                            placeholder="Your Experiences"
-                                           
-                                        />
-                                    </Grid>
-                                    
-                                    <Grid item xs={12} > 
-                                        <TextField 
-                                            name="currentWork"
-                                            id="Current work" 
-                                            label="Current work" 
-                                            variant="outlined"
-                                            placeholder="I'm currently workin in..."
-                                           
-                                        />
-                                    </Grid>
-            </Grid>
-          </Condition>
-          </Grid>
-          
-          <Grid item >
-<Condition when="reception" is="investor">
-            <Grid container spacing={3}>
-            <Grid item xs={12} md={6} >
-                <TextField 
-                    required
-                    id="outlined-basic" 
-                    label="Name of the organization" 
-                    variant="outlined"
-                    placeholder="Enter name of the organization "
-
-                />
+                      <Grid item xs={12} md={6}> 
+                          <TextField 
+                              name="experience"
+                              id="experience" 
+                              label="Experience" 
+                              variant="outlined"
+                              placeholder="Your Experiences"
+                              
+                          />
+                      </Grid>
+                      
+                      <Grid item xs={12} > 
+                          <TextField 
+                              name="currentWork"
+                              id="Current work" 
+                              label="Current work" 
+                              variant="outlined"
+                              placeholder="I'm currently workin in..."
+                              
+                          />
+                      </Grid>
+                    </Grid>
+                </Condition>
               </Grid>
-            <Grid item xs={12} md={6} >
-            <TextField 
-                    required
-                    id="outlined-basic" 
-                    label="Projects Funded" 
-                    variant="outlined"
-                    placeholder="Projects Funded"
-
-                />
-              </Grid>
-             
-            </Grid>
-          </Condition>
       </Grid>
-             </Grid>
         </form>
       )}
     </Form>

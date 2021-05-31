@@ -3,10 +3,8 @@ import { makeStyles ,createStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
 import {Card,CardHeader,CardMedia,CardContent,CardActions,Collapse,Avatar,IconButton,
   Typography,Box,Button, CardActionArea,Paper,Chip} from '@material-ui/core';
-import {BiLike} from 'react-icons/bi';
-import {MdAddCircle} from 'react-icons/md';
-import {RiUserFollowLine} from 'react-icons/ri';
-import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import {mentorDetails} from './../Feed/MenuItemList';
+
 
 import image from '../../../assets/avatar.png';
 
@@ -49,31 +47,33 @@ const useStyles = makeStyles((theme) =>
 const RenderMentorCard:React.FC =()=> {
   const classes = useStyles();
   return (
-    <Card className={classes.root}> 
-      <CardContent className={classes.cardcontent}>
-            <Box className={classes.CHcontent} >
-              
-                      <CardMedia
-                      component="img"
-                      className={classes.cover}
-                      alt="user Image"
-                      image={image}
-                      title="User Image"
-                      />      
-           </Box>
-           <Box  className={classes.CHcontent} >
-           <Typography className={classes.name} color="primary">John Doe</Typography>
-                <Typography className={classes.name} color="textSecondary">246 subscribers</Typography>
-                <Button variant="outlined" color="primary" className={classes.button}>Request Fund</Button> 
-           </Box>
-         </CardContent>  
-      {/*<CardActions>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>*/}
-
-    </Card>
+    <div>
+{ mentorDetails.map((card)=>{
+        return(
+          <Card className={classes.root}> 
+          <CardContent className={classes.cardcontent}>
+                <Box className={classes.CHcontent} >
+                  
+                          <CardMedia
+                          component="img"
+                          className={classes.cover}
+                          alt="user Image"
+                          image={image}
+                          title="User Image"
+                          />      
+               </Box>
+               <Box  className={classes.CHcontent} >
+               <Typography className={classes.name} color="primary">{card.name}</Typography>
+                    <Typography className={classes.name} color="textSecondary">{card.mentored} Mentored</Typography>
+                    <Button variant="outlined" color="primary" className={classes.button}>Request Mentoring</Button> 
+               </Box>
+             </CardContent>  
+        </Card>
+        );
+      })
+    }
+    </div>
+  
   );
 }
 

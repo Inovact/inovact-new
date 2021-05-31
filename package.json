@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "final-form": "^4.20.2",
     "jsonwebtoken": "^8.5.1",
+    "material-ui-search-bar": "^1.0.0",
     "middy": "^0.36.0",
     "passport": "^0.4.1",
     "passport-github2": "^0.1.12",
